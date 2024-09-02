@@ -3,14 +3,20 @@ import { Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { Teams } from '@screens/Teams';
 import theme from '@theme/index';
 import { useFonts } from 'expo-font';
+import { StatusBar } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
 
 export default function App() {
-  const [] = useFonts({ Roboto_400Regular, Roboto_700Bold });
+  const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
   
   return (
     <ThemeProvider theme={theme}>
-      <Loading />
+      <StatusBar
+      barStyle="dark-content" 
+      backgroundColor= "transparent"
+      translucent
+      />
+      { fontsLoaded ? <Teams /> : <Loading /> }   
     </ThemeProvider>
   );
 }
