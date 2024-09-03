@@ -1,17 +1,14 @@
-import { Text, Image } from "react-native";
-import Logo from "../../assets/logo.png";
 import { Container, Tittle, HeaderContainer } from "./styles";
+import { Header } from "@components/Header";
 
 
 
 export function Teams() {
     return (
         <Container>
-            {/* <Image source={Logo}/> */}
             {/* <Tittle>Equipes</Tittle> */}
-
             <HeaderContainer>
-                <Image source={Logo}/>
+                <Header  />
             </HeaderContainer>
         </Container>
     )

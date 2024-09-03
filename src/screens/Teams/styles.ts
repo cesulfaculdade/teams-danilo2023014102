@@ -1,5 +1,3 @@
-import theme from '@theme/index';
-import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -9,7 +7,7 @@ export const Container = styled.View`
 
   export const Tittle = styled.Text`
     font-family: ${( props ) => props.theme.FONT_FAMILY.BOLD };
-    font-size: 40;
+    font-size: 40px;
   `;
 
   export const HeaderContainer = styled.View`
