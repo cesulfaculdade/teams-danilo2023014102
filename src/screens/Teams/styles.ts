@@ -5,15 +5,10 @@ export const Container = styled.View`
     background-color: ${({ theme }) => theme.COLORS.GRAY_100};
   `;
 
-  export const Tittle = styled.Text`
-    font-family: ${( props ) => props.theme.FONT_FAMILY.BOLD };
-    font-size: 40px;
-  `;
-
   export const HeaderContainer = styled.View`
   background-color: ${( props ) => props.theme.COLORS.PURPLE_500 };
   width: 100%;
-  height: 173px;
   padding-top: 54px;
+  padding-bottom: 24px;
 
   `;

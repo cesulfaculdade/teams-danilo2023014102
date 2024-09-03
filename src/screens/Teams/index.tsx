@@ -1,4 +1,5 @@
-import { Container, Tittle, HeaderContainer } from "./styles";
+import { Highlight } from "@components/Highlight";
+import { Container, HeaderContainer } from "./styles";
 import { Header } from "@components/Header";
 
 
@@ -6,9 +7,13 @@ import { Header } from "@components/Header";
 export function Teams() {
     return (
         <Container>
-            {/* <Tittle>Equipes</Tittle> */}
             <HeaderContainer>
-                <Header  />
+                <Header />
+
+                <Highlight 
+                    title="Equipes"
+                    subtitle="Preparem suas equipes"
+                />
             </HeaderContainer>
         </Container>
     )
