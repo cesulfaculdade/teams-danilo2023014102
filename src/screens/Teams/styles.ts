@@ -1,15 +1,21 @@
+import theme from '@theme/index';
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
     flex: 1;
     background-color: ${({ theme }) => theme.COLORS.GRAY_100};
-    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-    font-size: ${({ theme }) => theme.FONT_SIZE.LG};
-    align-items: center;
-    justify-content: center;
   `;
 
   export const Tittle = styled.Text`
+    font-family: ${( props ) => props.theme.FONT_FAMILY.BOLD };
     font-size: 40;
+  `;
+
+  export const HeaderContainer = styled.View`
+  background-color: ${( props ) => props.theme.COLORS.PURPLE_500 };
+  width: 100%;
+  height: 173px;
+  padding-top: 54px;
+
   `;
