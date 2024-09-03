@@ -10,5 +10,8 @@ export const Container = styled.View`
   width: 100%;
   padding-top: 54px;
   padding-bottom: 24px;
+  `;
 
+  export const Content = styled.View`
+  
   `;
