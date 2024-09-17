@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import {Container, Message} from "./styles"
 
 type Props = {
     message: string;
@@ -6,9 +6,9 @@ type Props = {
 
 export function ListEmpty({message}: Props) {
     return(
-        <View>
-            <Text>{message}</Text>
-        </View>
+        <Container>
+            <Message>{message}</Message>
+        </Container>
 
     )
 }
