@@ -37,7 +37,7 @@ export function Teams() {
                     contentContainerStyle={teams.length === 0 && {flex: 1}}
                 />
 
-                <Button title="Criar uma equipe"/>
+                <Button title="Criar uma equipe" />
             </Content>
         </Container>
     )
