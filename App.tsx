@@ -1,5 +1,6 @@
 import { Loading } from '@components/Loading';
 import { Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
+import { NewTeam } from '@screens/NewTeam';
 import { Teams } from '@screens/Teams';
 import theme from '@theme/index';
 import { useFonts } from 'expo-font';
@@ -16,7 +17,7 @@ export default function App() {
       backgroundColor= "transparent"
       translucent
       />
-      { fontsLoaded ? <Teams /> : <Loading /> }   
+      { fontsLoaded ? <NewTeam /> : <Loading /> }   
     </ThemeProvider>
   );
 }

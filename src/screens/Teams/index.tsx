@@ -8,7 +8,6 @@ import { ListEmpty } from "src/ListEmpty";
 import { Button } from "@components/Button";
 
 
-
 export function Teams() {
     const [teams, setTeams] = useState<string[]>([]);
 
