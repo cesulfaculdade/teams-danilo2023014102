@@ -1,11 +1,10 @@
 import { Header } from "@components/Header";
-import { Container, Content, HeaderContainer } from "./styles";
+import { Container, Content, HeaderContainer } from "./style";
 import { Highlight } from "@components/Highlight";
-import { Button } from "@components/Button";
-import { TextInput } from "react-native";
 import { Input } from "@components/Input";
+import { Button } from "@components/Button";
 
-export function NewTeam(){
+export function AddMember() {
     return (
         <Container>
         <HeaderContainer>
@@ -13,15 +12,15 @@ export function NewTeam(){
 
             <Highlight
                 title="Nova Equipe"
-                subtitle="Crie uma equipe e adicione membros"
+                subtitle="Adicione os titulares e reservas"
             />
         </HeaderContainer>
 
         <Content>
-            <Input placeholder="Nome da Equipe"/>
+            <Input placeholder="Adicione o membro"/>
         
 
-            <Button title="Criar equipe" />
+            <Button title="Deletar Equipe" type="SECONDARY" />
         </Content>
     </Container>
     )
