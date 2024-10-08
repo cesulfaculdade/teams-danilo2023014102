@@ -13,7 +13,7 @@ export function AddMember() {
             <Header showBackButton/>
 
             <Highlight
-                title="Nova Equipe"
+                title="Equipe 1"
                 subtitle="Adicione os titulares e reservas"
             />
         </HeaderContainer>
