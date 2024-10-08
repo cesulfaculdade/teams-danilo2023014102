@@ -18,3 +18,7 @@ export const Container = styled.View`
   justify-content: space-between;
 
   `;
+
+  export const InputContainer = styled.View`
+  flex-direction: row;
+  `;

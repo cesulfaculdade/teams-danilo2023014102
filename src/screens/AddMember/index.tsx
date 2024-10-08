@@ -1,9 +1,10 @@
 import { Header } from "@components/Header";
-import { Container, Content, HeaderContainer } from "./style";
+import { Container, Content, HeaderContainer, InputContainer } from "./styles";
 import { Highlight } from "@components/Highlight";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
-import { ButtonIcon } from "@components/BurttonIcon";
+import { ButtonIcon } from "@components/ButtonIcon";
+
 
 export function AddMember() {
     return (
@@ -18,9 +19,14 @@ export function AddMember() {
         </HeaderContainer>
 
         <Content>
-            <Input placeholder="Adicione o membro"/>
-            <ButtonIcon  icon="add-circle-outline"/>
-        
+            <InputContainer>
+                <Input 
+                style= {{ borderTopRightRadius: 0, borderBottomRightRadius: 0, borderRightWidth: 0}}
+                placeholder="Adicione um membro"/>
+                <ButtonIcon  
+                style= {{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0}}
+                icon="add-circle-outline"/>
+            </InputContainer>
 
             <Button title="Deletar Equipe" type="SECONDARY" />
         </Content>
