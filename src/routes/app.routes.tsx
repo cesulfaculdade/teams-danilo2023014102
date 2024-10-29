@@ -16,7 +16,7 @@ export function AppRoutes(){
             />
 
             <Screen
-                name="newTeams"
+                name="newTeam"
                 component={NewTeam}
             />
         </Navigator>
