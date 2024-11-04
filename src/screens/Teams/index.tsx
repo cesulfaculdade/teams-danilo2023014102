@@ -7,6 +7,7 @@ import { FlatList } from "react-native";
 import { ListEmpty } from "src/ListEmpty";
 import { Button } from "@components/Button";
 import { useNavigation } from "@react-navigation/native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 
 export function Teams() {
@@ -14,13 +15,15 @@ export function Teams() {
 
     const navegation = useNavigation();
 
+    const insets = useSafeAreaInsets();
+
     function handleNewTeam() {
         navegation.navigate("newTeam");
     }
 
     return (
-        <Container>
-            <HeaderContainer>
+        <Container style={{ paddingBottom: insets.bottom }}>
+            <HeaderContainer style={{ paddingTop: insets.top }}>
                 <Header />
 
                 <Highlight 
@@ -38,7 +41,7 @@ export function Teams() {
                     )}
 
                     ListEmptyComponent={() => (
-                        <ListEmpty message="Comece criando uma equipe"/>
+                        <ListEmpty message="Começe criando uma equipe"/>
                     )}
                     contentContainerStyle={teams.length === 0 && {flex: 1}}
                 />
