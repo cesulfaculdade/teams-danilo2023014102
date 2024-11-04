@@ -11,7 +11,7 @@ export function Header( {showBackButton = false} : Props ) {
     const navegation = useNavigation();
 
     function handleGoBack () {
-        navegation.goBack();
+        navegation.navigate("teams");
     }
 
     return (
