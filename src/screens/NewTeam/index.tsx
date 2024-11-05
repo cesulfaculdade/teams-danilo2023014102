@@ -6,6 +6,7 @@ import { Input } from "@components/Input";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { createTeam } from "src/storage/team/createTeam";
 
 export function NewTeam(){
     const [team, setTeam] = useState<string>("");
@@ -14,7 +15,8 @@ export function NewTeam(){
 
     const insets = useSafeAreaInsets();
 
-    function handleAddMembers(){
+    async function handleAddMembers(){
+        await createTeam(team);
         navegation.navigate('addMember', {team: team})
     }
 
