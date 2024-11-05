@@ -2,11 +2,11 @@ import { Highlight } from "@components/Highlight";
 import { Container, Content, HeaderContainer } from "./styles";
 import { Header } from "@components/Header";
 import { TeamCard } from "@components/TeamCard";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FlatList } from "react-native";
 import { ListEmpty } from "src/ListEmpty";
 import { Button } from "@components/Button";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { fetchAllTeams } from "src/storage/team/fetchAllTeams";
 import ComponentStyle from "styled-components/dist/models/ComponentStyle";
@@ -32,9 +32,9 @@ export function Teams() {
         }
     }
 
-    useEffect(() => {
+    useFocusEffect(useCallback(() => {
         handleFetchAllTeams();
-    }, [])
+    }, []));
 
     return (
         <Container style={{ paddingBottom: insets.bottom }}>
