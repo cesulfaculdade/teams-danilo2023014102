@@ -4,7 +4,7 @@ import { Header } from "@components/Header";
 import { TeamCard } from "@components/TeamCard";
 import { useCallback, useState } from "react";
 import { FlatList } from "react-native";
-import { ListEmpty } from "src/ListEmpty";
+import { ListEmpty } from "@components/ListEmpty";
 import { Button } from "@components/Button";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";

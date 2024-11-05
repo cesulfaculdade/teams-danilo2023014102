@@ -9,7 +9,7 @@ import { FlatList } from "react-native";
 import { useState } from "react";
 import { Tag } from "@components/Tag";
 import { MemberCard } from "@components/MemberCard";
-import { ListEmpty } from "src/ListEmpty";
+import { ListEmpty } from "@components/ListEmpty";
 import { useRoute } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
