@@ -32,6 +32,11 @@ export function Teams() {
         }
     }
 
+    function handleNavigateToMembers(team: string){
+        navegation.navigate("addMember", { team});
+    }
+    
+
     useFocusEffect(useCallback(() => {
         handleFetchAllTeams();
     }, []));
@@ -52,7 +57,7 @@ export function Teams() {
                     data={teams}
                     keyExtractor={(item) => item}
                     renderItem={({item}) => (
-                        <TeamCard title={item} /> 
+                        <TeamCard title={item} onPress={() => handleNavigateToMembers(item)}/> 
                     )}
 
                     ListEmptyComponent={() => (
