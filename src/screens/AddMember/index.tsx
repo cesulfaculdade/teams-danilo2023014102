@@ -6,14 +6,16 @@ import { Button } from "@components/Button";
 import { ButtonIcon } from "@components/ButtonIcon";
 import { Tab } from "@components/Tab";
 import { Alert, FlatList } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Tag } from "@components/Tag";
 import { MemberCard } from "@components/MemberCard";
 import { ListEmpty } from "@components/ListEmpty";
 import { useRoute } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { CreateMemberOnTime } from "@storage/member/createMemberOnTeam";
+import { createMembersOnTeam } from "@storage/member/createMemberOnTeam";
 import { appError } from "@utils/AppError";
+import { getMembersByTypeAndTeam } from "@storage/member/getMembersByTypeAndTeam";
+import { MemberStorageDTO } from "@storage/member/MemberStorageDTO";
 
 type RouteParms = {
     team: string;
@@ -22,7 +24,7 @@ type RouteParms = {
 export function AddMember() {
     const [newMemberName, setNewMemberName] = useState<string>("")
     const [tab, setTab] = useState<string>("Titular");
-    const [members, setMembers] = useState<string[]>([]);
+    const [members, setMembers] = useState<MemberStorageDTO[]>([]);
 
     const insets = useSafeAreaInsets();
 
@@ -41,7 +43,11 @@ export function AddMember() {
         }
 
         try {
-            await CreateMemberOnTime(newMember ,team);
+            await createMembersOnTeam(newMember ,team);
+
+            setNewMemberName("");
+
+            fetchMembersByTypeAndTeam();
         } catch (error) {
             if (error instanceof appError){
                 Alert.alert("Novo erro", error.message)
@@ -49,9 +55,20 @@ export function AddMember() {
                 Alert.alert("Novo membro", "Não foi possivel adiconar um novo membro.")
             }
         }
-
-        
     }
+
+    async function fetchMembersByTypeAndTeam () {
+        try {
+            const membersByTeam = await getMembersByTypeAndTeam(team, tab)
+            setMembers(membersByTeam);
+        } catch (error) {
+            
+        }
+    }
+
+    useEffect(() => {
+        fetchMembersByTypeAndTeam();
+    }, [tab])
 
     return (
         <Container style={{ paddingBottom: insets.bottom }} >
@@ -67,9 +84,14 @@ export function AddMember() {
         <Content>
             <InputContainer>
                 <Input 
-                value={newMemberName}
                 style= {{ borderTopRightRadius: 0, borderBottomRightRadius: 0, borderRightWidth: 0}}
-                placeholder="Adicione um membro"/>
+                placeholder="Adicione um membro"
+                onChangeText={setNewMemberName}
+                value={newMemberName}
+                autoCorrect={false}
+                returnKeyType="done"
+                onSubmitEditing={handleAddMember}
+                /> 
                 <ButtonIcon  
                 style= {{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0}}
                 icon="add-circle-outline"/>
@@ -93,10 +115,10 @@ export function AddMember() {
 
             <FlatList
                 data={members}
-                keyExtractor={item => item}
+                keyExtractor={item => item.name}
                 renderItem={({item}) => (
                 <MemberCard 
-                    name={item} 
+                    name={item.name} 
                     onRemove={() => console.log("remove")} 
                     />
                 )}

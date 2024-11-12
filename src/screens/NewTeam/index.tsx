@@ -19,7 +19,7 @@ export function NewTeam(){
 
     async function handleAddTeam(){
         try {
-            if (team.trim().length) {
+            if (team.trim().length === 0) {
                 return Alert.alert("Nova equipe", "Informe o nome da equipe.")
             }
             await createTeam(team);
