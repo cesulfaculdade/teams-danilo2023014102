@@ -5,27 +5,53 @@ import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 import { ButtonIcon } from "@components/ButtonIcon";
 import { Tab } from "@components/Tab";
-import { FlatList } from "react-native";
+import { Alert, FlatList } from "react-native";
 import { useState } from "react";
 import { Tag } from "@components/Tag";
 import { MemberCard } from "@components/MemberCard";
 import { ListEmpty } from "@components/ListEmpty";
 import { useRoute } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { CreateMemberOnTime } from "@storage/member/createMemberOnTeam";
+import { appError } from "@utils/AppError";
 
 type RouteParms = {
     team: string;
 }
 
-
 export function AddMember() {
+    const [newMemberName, setNewMemberName] = useState<string>("")
     const [tab, setTab] = useState<string>("Titular");
-    const [members, setMembers] = useState<string[]>(["Sapao"]);
+    const [members, setMembers] = useState<string[]>([]);
 
     const insets = useSafeAreaInsets();
 
     const route = useRoute();
     const { team } = route.params as RouteParms;
+
+    async function handleAddMember() {
+        if (newMemberName.trim().length === 0) {
+            return Alert.alert("Novo membro","Informe o nome do membro para adicionar");
+        }
+
+        const newMember = {
+            name: newMemberName,
+            team: team,
+            type: tab,
+        }
+
+        try {
+            await CreateMemberOnTime(newMember ,team);
+        } catch (error) {
+            if (error instanceof appError){
+                Alert.alert("Novo erro", error.message)
+            } else {
+                Alert.alert("Novo membro", "Não foi possivel adiconar um novo membro.")
+            }
+        }
+
+        
+    }
 
     return (
         <Container style={{ paddingBottom: insets.bottom }} >
@@ -41,6 +67,7 @@ export function AddMember() {
         <Content>
             <InputContainer>
                 <Input 
+                value={newMemberName}
                 style= {{ borderTopRightRadius: 0, borderBottomRightRadius: 0, borderRightWidth: 0}}
                 placeholder="Adicione um membro"/>
                 <ButtonIcon  
